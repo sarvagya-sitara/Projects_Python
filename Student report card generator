@@ -1,0 +1,61 @@
+'''This is a simple student report card generator program.
+It takes input from the user such as name, age, class, and marks in various subjects,
+then calculates the total marks, percentage, and grade,
+and finally prints out a formatted report card.'''
+
+#Taking input from the user
+name = input("Enter student's name: ")
+roll_number = input("Enter student's roll number: ")
+student_sem = input("Enter student's semester: ")
+date_of_birth = input("Enter student's date of birth (DD/MM/YYYY): ")
+
+n = int(input("Enter the number of subject: "))
+a = []
+for i in range(n):
+    element = input(f"Enter element {i+1}: ")
+    a.append(element)
+print("List:", a)   
+marks = {}
+for i in range(n):
+    mark = float(input(f"Enter marks obtained in {a[i]}: "))
+    marks[a[i]] = mark
+#Calculating total marks and percentage
+total_marks = sum(marks.values())
+percentage = (total_marks / (n * 100)) * 100
+#Determining grade based on percentage
+if percentage >= 90:
+    grade = 'A+'
+    Remark = "EXCELLENT WORK!, KEEP IT UP!"
+elif percentage >= 80:
+    grade = 'A'
+    Remark = "VERY GOOD!, KEEP IT UP!"
+elif percentage >= 70:
+    grade = 'B+'
+    Remark = "GOOD JOB!, YOU CAN DO BETTER!"
+elif percentage >= 60:
+    grade = 'B'
+    Remark = "FAIR EFFORT!, IMPROVE MORE!"
+elif percentage >= 50:
+    grade = 'C'
+    Remark = "NEEDS IMPROVEMENT!, WORK HARDER!"
+elif percentage >= 40:
+    grade = 'D'
+    Remark = "PASSING GRADE!, BUT STRIVE FOR BETTER!"
+else:
+    grade = 'F'
+    Remark = "FAILED!, DON'T GIVE UP, KEEP TRYING!"
+#Printing the report card
+print("\n----- STUDENT REPORT CARD -----")
+print(f"Name: {name}")
+print(f"Roll Number: {roll_number}")
+print(f"Semester: {student_sem}")
+print(f"Date of Birth: {date_of_birth}")
+print("\n------Subject-wise Marks------")
+for subject, mark in marks.items():
+    print(f"{subject}: {mark}/100")
+    print("===============================")
+print(f"\nTotal Marks: {total_marks}/{n * 100}")
+print(f"Percentage: {percentage:.2f}%")
+print(f"Grade: {grade}")
+print(f"Remark: {Remark}")
+print("-------------------------------")
